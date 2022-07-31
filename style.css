@@ -18,8 +18,13 @@ body {
   flex: 1;
   min-height: 100px;
   display: flex;
+  justify-content: center;
   font-weight: 700;
   font-size: 60px;
+}
+
+.titleText {
+    padding: auto;
 }
 
 /* BOTH BUTTON AND GRID SECTION DEFINITION */
