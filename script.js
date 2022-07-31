@@ -4,9 +4,13 @@ const mainGrid = document.getElementById("mainGrid")
 // Select the buttons in the DOM
 const clearButton = document.getElementById("clearButton")
 
+// Select the inputs
+const colorInput = document.getElementById("colorInput")
+
 // Start all variables
 let size = 50
 let mouseClicked = false
+let color = "black"
 
 // Start the grid
 mainGrid.style.display = "grid"
@@ -22,7 +26,7 @@ for(let i = 0; i < size*size; i++) {
 
     // When a user clicks on a square, it is painted
     gridSquare.addEventListener("click", function(){
-        this.style.backgroundColor = "black"
+        this.style.backgroundColor = color
     })
 
     // When a user presses the mouse over a square, a boolean refering to the mouse
@@ -40,7 +44,7 @@ for(let i = 0; i < size*size; i++) {
     // When a user enters a new square, if the mouse is clicked, it will be painted
     gridSquare.addEventListener("mouseenter", function(){
         if (mouseClicked) {
-            this.style.backgroundColor = "black"
+            this.style.backgroundColor = color
         }
     })
 
@@ -66,4 +70,10 @@ for(let i = 0; i < size*size; i++) {
 clearButton.addEventListener("click", function(){
     let allGridSquares = document.querySelectorAll(".gridSquare")
     allGridSquares.forEach(gridS => gridS.style.backgroundColor = "white")
+})
+
+// Set color to color in input
+colorInput.addEventListener("change", function(){
+    color = colorInput.value
+    console.log(color)
 })

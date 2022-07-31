@@ -12,10 +12,28 @@
         <div class="titleDiv" id="titleDiv">a</div>
         <div class="contentDiv" id="contentDiv">
             <div class="buttonsDiv" id="buttonsDiv">
-                <button class="optionButton" id="clearButton">Clear</button>
-                <button class="optionButton" id="rainbowButton">Rainbow</button>
-                <input type="color">
-                <input type="range">
+                <div class="colorDiv" id="colorDiv">
+                    <div class="colorModeDiv" id="colorModeDiv">
+                        <button class="optionButton" id="colorModeButton">Color Mode</button>
+                        <input type="color" class="colorModeInput" id="colorModeInput">
+                    </div>
+                    <button class="optionButton" id="rainbowButton">Rainbow Mode</button>
+                    <button class="optionButton" id="darkerButton">Darker Mode</button>
+                    <button class="optionButton" id="brighterButton">Brighter Mode</button>
+                </div>
+                <div class="clearDiv" id="clearDiv">
+                    <button class="optionButton" id="eraserButton">Eraser</button>
+                    <button class="optionButton" id="clearButton">Clear All</button>
+                </div>
+                <div class="brushSizeDiv" id="brushSizeDiv">
+                    <p class="brushSizeText" id="brushSizeText"></p>
+                    <input type="range" class="brushSizeInput" id="brushSizeInput">
+                </div>
+                <div class="gridSizeDiv" id="gridSizeDiv">
+                    <p class="gridSizeText" id="gridSizeText"></p>
+                    <input type="range" class="gridSizeInput" id="gridSizeInput">
+<!-- ADD A TOGGLE TO SHOW/REMOVE THE GRID -->
+                </div>
             </div>
             <div class="gridDiv" id="gridDiv">
                 <div class="mainGrid" id="mainGrid"></div>
