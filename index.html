@@ -9,7 +9,7 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <div class="titleDiv" id="titleDiv">a</div>
+        <div class="titleDiv" id="titleDiv">ETCH-A-SKETCH</div>
         <div class="contentDiv" id="contentDiv">
             <div class="buttonsDiv" id="buttonsDiv">
                 <div class="colorDiv" id="colorDiv">
@@ -20,18 +20,26 @@
                     <button class="optionButton" id="rainbowButton">Rainbow Mode</button>
                     <button class="optionButton" id="darkerButton">Darker Mode</button>
                     <button class="optionButton" id="brighterButton">Brighter Mode</button>
-                </div>
-                <div class="clearDiv" id="clearDiv">
                     <button class="optionButton" id="eraserButton">Eraser</button>
                     <button class="optionButton" id="clearButton">Clear All</button>
                 </div>
                 <div class="brushSizeDiv" id="brushSizeDiv">
-                    <p class="brushSizeText" id="brushSizeText"></p>
-                    <input type="range" class="brushSizeInput" id="brushSizeInput">
+                    <div class="sizeTitle">BRUSH SIZE</div>
+                    <div class="sizeInputDiv">
+                        <input type="range" min="1" max="3" step="1" class="brushSizeInput rangeInput" id="brushSizeInput">
+                        <div class="ticks">
+                            <span class="tick">1</span>
+                            <span class="tick">2</span>
+                            <span class="tick">3</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="gridSizeDiv" id="gridSizeDiv">
-                    <p class="gridSizeText" id="gridSizeText"></p>
-                    <input type="range" class="gridSizeInput" id="gridSizeInput">
+                    <div class="sizeTitle">GRID SIZE</div>
+                    <div class="sizeInputDiv">
+                        <div class="gridSizeText" id="gridSizeText">20 X 20</div>
+                        <input type="range" min="10" max="80" step="1" class="gridSizeInput rangeInput" id="gridSizeInput">
+                    </div>
 <!-- ADD A TOGGLE TO SHOW/REMOVE THE GRID -->
                 </div>
             </div>

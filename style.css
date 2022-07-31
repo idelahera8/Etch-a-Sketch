@@ -1,7 +1,8 @@
-div {
+/* Just for debugging reasons. Make all divs visible */
+/*div {
     border: 1px solid red;
-}
-
+}*/
+/* Make the body expand the whole screen + make the divs under it in flex mode */
 body {
     margin: 0;
     padding: 0;
@@ -9,12 +10,19 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: lightgray;
 }
 
+/* TITLE DEFINITION */
 .titleDiv {
-    flex: 1;
+  flex: 1;
+  min-height: 100px;
+  display: flex;
+  font-weight: 700;
+  font-size: 60px;
 }
 
+/* BOTH BUTTON AND GRID SECTION DEFINITION */
 .contentDiv{
     flex: 6;
     display: flex;
@@ -22,20 +30,134 @@ body {
     align-items: center;
 }
 
+/* BUTTON SECTION DEFINITION */
 .buttonsDiv {
     width: 250px;
     height: 700px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    background-color: darkgrey;
+    border-radius: 20px;
+    border: 1px black solid;
 }
 
+.colorDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.colorModeDiv {
+    display: flex;
+}
+
+.gridSizeDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.brushSizeDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.sizeInputDiv {
+    width: 80%;
+    margin: auto;
+}
+
+.sizeTitle {
+    padding-left: 10px;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.gridSizeText {
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* GRID SECTION DEFINITION */
 .gridDiv {
     width: 700px;
     height: 700px;
+    background-color: darkgrey;
+    border-radius: 20px;
+    border: 1px solid black;
 }
 
 .mainGrid{
     margin: 50px;
     width: 600px;
     height: 600px;
+    background-color: white;
+    border: 1px black solid;
 }
+
+/* BUTTONS */
+button {
+    width: 60%;
+    height: 60px;
+    border: 1px black solid;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px;
+    background-color: lightgrey;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* COLOR INPUT */
+.colorModeInput {
+    height: 60px;
+    border-radius: 5px;
+    border-color: black solid 1px;
+    margin: 10px;
+}
+
+/* RANGE INPUT */
+.rangeInput {
+    margin: 10px auto;
+    width: 100%;
+    height: 5px;
+    -webkit-appearance: none;   /* Remove blue default view */
+    background: lightgrey;    /* Color of range */
+    border: 1px black solid;  /* Border around the slide */
+    border-radius: 5px;         /* Radius of border of slide */
+    opacity: 0.7;               /* Set opacity slightly lower by default */
+  }
+
+  .rangeInput::-webkit-slider-thumb {  /* Slider definition */
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: black;
+    cursor: pointer;
+    border: 1px solid black;
+  }
+
+  .rangeInput:hover {
+    opacity: 1;                 /* Make opacity higher on hover */
+  }
+
+  /* TICKS FOR BRUSH SIZE RANGE */
+  .ticks {
+    display: flex;
+    justify-content: space-between;    
+    padding: 2px;
+  }
+
+  /* ------------  NEED TO UNDERSTAND THIS CODE ------------------ */
+  .tick {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: black;
+    height: 10px;
+    line-height: 50px;
+    margin-bottom: 10px;
+  }
