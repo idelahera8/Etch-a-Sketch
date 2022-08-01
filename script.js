@@ -2,13 +2,20 @@
 const mainGrid = document.getElementById("mainGrid")
 
 // Select the buttons in the DOM
+const colorButton = document.getElementById("colorModeButton")
+const rainbowButton = document.getElementById("rainbowButton")
+const darkerButton = document.getElementById("darkerButton")
+const brighterButton = document.getElementById("brighterButton")
+const eraserButton = document.getElementById("eraserButton")
 const clearButton = document.getElementById("clearButton")
 
 // Select the inputs
-const colorInput = document.getElementById("colorInput")
+const colorInput = document.getElementById("colorModeInput")
+const brushInput = document.getElementById("brushSizeInput")
+const gridSizeInput = document.getElementById("gridSizeInput")
 
 // Start all variables
-let size = 50
+let size = 20
 let mouseClicked = false
 let color = "black"
 
@@ -54,7 +61,7 @@ for(let i = 0; i < size*size; i++) {
     // of sync
     gridSquare.addEventListener("dragenter", function(e){
         mouseClicked = true
-        this.style.backgroundColor = "black"
+        this.style.backgroundColor = color
     })
 
     // When a user stops dragging, we set the mouseClicked to false so it doesnt
