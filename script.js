@@ -127,27 +127,48 @@ function paintSquare(gridSquare) {
 // Change the mode on Color Mode button click
 colorButton.addEventListener("click", function() {
     mode = "colorMode"
+    unselectButtons()
+    this.classList.add("selectedButton")
 })
 
 // Change the mode on Rainbow Mode button click
 rainbowButton.addEventListener("click", function() {
     mode = "rainbowMode"
+    unselectButtons()
+    this.classList.add("selectedButton")
 })
 
 // Change the mode on Darker Mode button click
-rainbowButton.addEventListener("click", function() {
+darkerButton.addEventListener("click", function() {
     mode = "darkerMode"
+    unselectButtons()
+    this.classList.add("selectedButton")
 })
 
 // Change the mode on Brighter Mode button click
-rainbowButton.addEventListener("click", function() {
+brighterButton.addEventListener("click", function() {
     mode = "brighterMode"
+    unselectButtons()
+    this.classList.add("selectedButton")
 })
 
 // Change the mode on Eraser Mode button click
-rainbowButton.addEventListener("click", function() {
+eraserButton.addEventListener("click", function() {
     mode = "eraserMode"
+    unselectButtons()
+    this.classList.add("selectedButton")
 })
+
+
+
+
+
+// ---------- CHANGE STYLE OF BUTTONS TO STANDARD -------------- //
+function unselectButtons() {
+    let allButtons = document.querySelectorAll("button")
+    console.log(allButtons)
+    allButtons.forEach(button => button.classList.remove("selectedButton"))
+}
 
 /*
 

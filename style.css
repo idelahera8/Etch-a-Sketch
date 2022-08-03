@@ -115,6 +115,11 @@ button {
     font-weight: 700;
 }
 
+.selectedButton {
+    background-color: black;
+    color: lightgrey;
+}
+
 /* COLOR INPUT */
 .colorModeInput {
     height: 60px;
