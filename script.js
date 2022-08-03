@@ -129,7 +129,7 @@ function paintSquare(gridSquare) {
         color = modifyColor(getRGBValues(gridSquare.style.backgroundColor), mode)
     }
     else {
-        color = "white"
+        color = "rgb(255, 255, 255)"
     }
     gridSquare.style.backgroundColor = color
 }
@@ -177,7 +177,7 @@ eraserButton.addEventListener("click", function() {
 
 // Clear grid
 clearButton.addEventListener("click", function(){
-    allGridSquares.forEach(gridSquare => gridSquare.style.backgroundColor = "white")
+    allGridSquares.forEach(gridSquare => gridSquare.style.backgroundColor = "rgb(255, 255, 255)")
 })
 
 
