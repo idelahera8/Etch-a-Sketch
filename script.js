@@ -19,18 +19,22 @@ const gridSizeText = document.getElementById("gridSizeText")
 
 
 
+
+
 // --------- INITIALIZATION --------- //
 
 // Start all variables
 let size = 45
 let mode = "colorMode"
-// let mouseClicked = false
+let mouseClicked = false
 let color = "black"
 let allGridSquares
 let gridSquare
 
 // Start grid
 createGrid(size)
+
+
 
 
 
@@ -69,6 +73,8 @@ function clearGrid() {
 
 
 
+
+
 // ------------ GRID SQUARES LISTENING EVENTS -----------//
 
 // A function that puts a gridSquare to listen for clicks, hover and drags 
@@ -80,9 +86,30 @@ function gridSquareListener() {
 
     // Listen for hover
     allGridSquares.forEach(gridSquare => gridSquare.addEventListener("mouseenter", function(){
-        paintSquare(this)
+        if (mouseClicked) {
+            paintSquare(this)
+        }
     }))
 }
+
+
+
+
+
+// ------- WINDOW LISTENERS FOR MOUSE UP/DOWN ---------//
+
+// Listen for mousedown. We only want to paint when the user is clicking the mouse
+// so we set a mouseClicked flag to true
+window.addEventListener("mousedown", function() {
+    mouseClicked = true
+})
+
+// Listen for mouseup. We set the mouseClicked flag to false
+window.addEventListener("mouseup", function() {
+    mouseClicked = false
+})
+
+
 
 
 
@@ -90,6 +117,37 @@ function gridSquareListener() {
 function paintSquare(gridSquare) {
     gridSquare.style.backgroundColor = color
 }
+
+
+
+
+
+// ------------ BUTTON LISTENERS ---------------- //
+
+// Change the mode on Color Mode button click
+colorButton.addEventListener("click", function() {
+    mode = "colorMode"
+})
+
+// Change the mode on Rainbow Mode button click
+rainbowButton.addEventListener("click", function() {
+    mode = "rainbowMode"
+})
+
+// Change the mode on Darker Mode button click
+rainbowButton.addEventListener("click", function() {
+    mode = "darkerMode"
+})
+
+// Change the mode on Brighter Mode button click
+rainbowButton.addEventListener("click", function() {
+    mode = "brighterMode"
+})
+
+// Change the mode on Eraser Mode button click
+rainbowButton.addEventListener("click", function() {
+    mode = "eraserMode"
+})
 
 /*
 
