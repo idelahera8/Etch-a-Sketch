@@ -59,6 +59,7 @@ function createGrid (size) {
     for (let i = 0; i < size * size; i++) {
         gridSquare = document.createElement("div")
         gridSquare.classList.add("gridSquare")
+        gridSquare.style.backgroundColor = "rgb(255, 255, 255)"
         mainGrid.appendChild(gridSquare)
     }
     allGridSquares = document.querySelectorAll(".gridSquare")
@@ -122,10 +123,10 @@ function paintSquare(gridSquare) {
         color = randomColor()
     }
     else if (mode == "darkerMode") {
-        
+        color = modifyColor(getRGBValues(gridSquare.style.backgroundColor), mode)
     }
     else if (mode == "brighterMode") {
-
+        color = modifyColor(getRGBValues(gridSquare.style.backgroundColor), mode)
     }
     else {
         color = "white"
@@ -174,6 +175,11 @@ eraserButton.addEventListener("click", function() {
     this.classList.add("selectedButton")
 })
 
+// Clear grid
+clearButton.addEventListener("click", function(){
+    allGridSquares.forEach(gridSquare => gridSquare.style.backgroundColor = "white")
+})
+
 
 
 
@@ -202,38 +208,61 @@ function randomColor() {
     return `rgb(${r}, ${g}, ${b})`
 }
 
-/*
+//Get the r, g, b values from a rgb string
+function getRGBValues(str) {
+    var vals = str.substring(str.indexOf('(') +1, str.length -1).split(', ');
+    return {
+      r: vals[0],
+      g: vals[1],
+      b: vals[2]
+    };
+  }
 
-// Create all gridSquares needed
-for(let i = 0; i < size*size; i++) {
-    let gridSquare = document.createElement("div")
-    gridSquare.classList.add("gridSquare")
-
-    // All event listeners to change the background color when hovering over a grid
-    // if the mouse is clicked
-
-    // When a user clicks on a square, it is painted
-    gridSquare.addEventListener("click", paintSquare(this, color))
-
-    // When a user presses the mouse over a square, a boolean refering to the mouse
-    // is set to true
-    gridSquare.addEventListener("mousedown", function(){
-        mouseClicked = true
-    })
-
-    // When a user releases the mouse over a square, a boolean refering to the mouse
-    // is set to false
-    gridSquare.addEventListener("mouseup", function(){
-        mouseClicked = false
-    })
-
-    // When a user enters a new square, if the mouse is clicked, it will be painted
-    gridSquare.addEventListener("mouseenter", function(){
-        if (mouseClicked) {
-            this.style.backgroundColor = color
+// A function that makes a color 10% darker or brighter
+function modifyColor(colorToModify, mode) {
+    // Get the color values
+    let rColor = parseInt(colorToModify.r)
+    let gColor = parseInt(colorToModify.g)
+    let bColor = parseInt(colorToModify.b)
+    // If darker mode, make the color 10% darker
+    if (mode == "darkerMode"){
+        if (rColor >= 25) {
+            rColor -= 25
+        } else {
+            rColor = 0
         }
-    })
+        if (gColor >= 25) {
+            gColor -= 25
+        } else {
+            gColor = 0
+        }
+        if (bColor >= 25) {
+            bColor -= 25
+        } else {
+            bColor = 0
+        }
+    // If brighter mode, make the color 10% brighter    
+    } else if (mode == "brighterMode") {
+        if (rColor <= 230) {
+            rColor += 25
+        } else {
+            rColor = 255
+        }
+        if (gColor <= 230) {
+            gColor += 25
+        } else {
+            gColor = 255
+        }
+        if (bColor <= 230) {
+            bColor += 25
+        } else {
+            bColor = 255
+        }
+    }
+    return `rgb(${rColor}, ${gColor}, ${bColor})`
+}
 
+/*
     // When a user drags over a square, it will paint all squares over which we are
     // dragging. This is needed because when dragging, the mousedown event is not
     // triggered. We also need to set the mouseClicked to true so it doesnt get out
@@ -248,14 +277,4 @@ for(let i = 0; i < size*size; i++) {
     gridSquare.addEventListener("dragend", function(){
         mouseClicked = false
     })
-
-    mainGrid.appendChild(gridSquare)
-}
-
-// Clear grid
-clearButton.addEventListener("click", function(){
-    let allGridSquares = document.querySelectorAll(".gridSquare")
-    allGridSquares.forEach(gridS => gridS.style.backgroundColor = "white")
-})
-
 */
