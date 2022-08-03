@@ -1,3 +1,5 @@
+// ------- SELECTORS -------- //
+
 // Select the mainGrid in the DOM
 const mainGrid = document.getElementById("mainGrid")
 
@@ -13,15 +15,83 @@ const clearButton = document.getElementById("clearButton")
 const colorInput = document.getElementById("colorModeInput")
 const brushInput = document.getElementById("brushSizeInput")
 const gridSizeInput = document.getElementById("gridSizeInput")
+const gridSizeText = document.getElementById("gridSizeText")
+
+
+
+// --------- INITIALIZATION --------- //
 
 // Start all variables
-let size = 20
-let mouseClicked = false
+let size = 45
+let mode = "colorMode"
+// let mouseClicked = false
 let color = "black"
+let allGridSquares
+let gridSquare
 
-// Start the grid
-mainGrid.style.display = "grid"
-mainGrid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+// Start grid
+createGrid(size)
+
+
+
+// ---------- GRID SIZE MANIPULATION --------- //
+
+// The text of the grid size changes continuously
+gridSizeInput.addEventListener("input", function(){
+    size = gridSizeInput.value
+    gridSizeText.textContent = `${size} X ${size}`
+})
+
+// The grid size doesn-t actually change until the user stops moving the range. This
+// makes the program less resource heavy
+gridSizeInput.addEventListener("change", function() {
+    clearGrid()
+    createGrid(size)
+})
+
+// Function to create all the elements of the grid. Each element is listening
+function createGrid (size) {
+    mainGrid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+    for (let i = 0; i < size * size; i++) {
+        gridSquare = document.createElement("div")
+        gridSquare.classList.add("gridSquare")
+        mainGrid.appendChild(gridSquare)
+    }
+    allGridSquares = document.querySelectorAll(".gridSquare")
+    gridSquareListener()
+}
+
+// Function to remove all grid elements. Necessary to first remove all elements
+// before creating new
+function clearGrid() {
+    allGridSquares.forEach(gridSquare => gridSquare.remove())
+}
+
+
+
+// ------------ GRID SQUARES LISTENING EVENTS -----------//
+
+// A function that puts a gridSquare to listen for clicks, hover and drags 
+function gridSquareListener() {
+    // Listen for click
+    allGridSquares.forEach(gridSquare => gridSquare.addEventListener("click", function(){
+        paintSquare(this)
+    }))
+
+    // Listen for hover
+    allGridSquares.forEach(gridSquare => gridSquare.addEventListener("mouseenter", function(){
+        paintSquare(this)
+    }))
+}
+
+
+
+// ------------ PAINT SQUARE ------------------ //
+function paintSquare(gridSquare) {
+    gridSquare.style.backgroundColor = color
+}
+
+/*
 
 // Create all gridSquares needed
 for(let i = 0; i < size*size; i++) {
@@ -32,9 +102,7 @@ for(let i = 0; i < size*size; i++) {
     // if the mouse is clicked
 
     // When a user clicks on a square, it is painted
-    gridSquare.addEventListener("click", function(){
-        this.style.backgroundColor = color
-    })
+    gridSquare.addEventListener("click", paintSquare(this, color))
 
     // When a user presses the mouse over a square, a boolean refering to the mouse
     // is set to true
@@ -84,3 +152,12 @@ colorInput.addEventListener("change", function(){
     color = colorInput.value
     console.log(color)
 })
+
+*/
+
+function paintSquare(gridSquare, mode) {
+    if (mode == "rainbowMode") {
+        color = rgb(Math.random()*255, Math.random()*255, Math.random()*255)
+    }
+    gridSquare.style.backgroundColor = color
+}

@@ -8,11 +8,11 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
     </head>
-    <body>
+    <body draggable="false">
         <div class="titleDiv" id="titleDiv">
             <div class="titleText">ETCH-A-SKETCH</div>
         </div>
-        <div class="contentDiv" id="contentDiv">
+        <div draggable="false" class="contentDiv" id="contentDiv">
             <div class="buttonsDiv" id="buttonsDiv">
                 <div class="colorDiv" id="colorDiv">
                     <div class="colorModeDiv" id="colorModeDiv">
@@ -39,14 +39,14 @@
                 <div class="gridSizeDiv" id="gridSizeDiv">
                     <div class="sizeTitle">GRID SIZE</div>
                     <div class="sizeInputDiv">
-                        <div class="gridSizeText" id="gridSizeText">20 X 20</div>
+                        <div class="gridSizeText" id="gridSizeText">45 X 45</div>
                         <input type="range" min="10" max="80" step="1" class="gridSizeInput rangeInput" id="gridSizeInput">
                     </div>
 <!-- ADD A TOGGLE TO SHOW/REMOVE THE GRID -->
                 </div>
             </div>
-            <div class="gridDiv" id="gridDiv">
-                <div class="mainGrid" id="mainGrid"></div>
+            <div class="gridDiv" id="gridDiv" draggable="false">
+                <div draggable="false" class="mainGrid" id="mainGrid"></div>
             </div>
         </div>
     </body>
