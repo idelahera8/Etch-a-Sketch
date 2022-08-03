@@ -86,7 +86,7 @@ function gridSquareListener() {
     }))
 
     // Listen for hover
-    allGridSquares.forEach(gridSquare => gridSquare.addEventListener("mouseenter", function(){
+    allGridSquares.forEach(gridSquare => gridSquare.addEventListener("mouseover", function(){
         if (mouseClicked) {
             paintSquare(this)
         }
@@ -108,6 +108,11 @@ window.addEventListener("mousedown", function() {
 // Listen for mouseup. We set the mouseClicked flag to false
 window.addEventListener("mouseup", function() {
     mouseClicked = false
+})
+
+// Not allowing for dragging (which was breking the flow)
+window.addEventListener("dragstart", function(e){
+    e.preventDefault()
 })
 
 

@@ -1,7 +1,3 @@
-/* Just for debugging reasons. Make all divs visible */
-/*div {
-    border: 1px solid red;
-}*/
 /* Make the body expand the whole screen + make the divs under it in flex mode */
 body {
     margin: 0;
