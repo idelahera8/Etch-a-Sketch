@@ -115,9 +115,18 @@ button {
     font-weight: 700;
 }
 
+.optionButton {
+    opacity: 0.8;
+}
+
+.optionButton:hover {
+    opacity: 1;
+}
+
 .selectedButton {
     background-color: black;
     color: lightgrey;
+    opacity: 1;
 }
 
 /* COLOR INPUT */
@@ -126,6 +135,11 @@ button {
     border-radius: 5px;
     border-color: black solid 1px;
     margin: 10px;
+    opacity: 1;
+}
+
+.colorModeInput:hover {
+    opacity: 0.8;
 }
 
 /* RANGE INPUT */
