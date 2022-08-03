@@ -115,6 +115,21 @@ window.addEventListener("mouseup", function() {
 
 // ------------ PAINT SQUARE ------------------ //
 function paintSquare(gridSquare) {
+    if (mode == "colorMode") {
+        color = colorInput.value
+    }
+    else if(mode == "rainbowMode") {
+        color = randomColor()
+    }
+    else if (mode == "darkerMode") {
+        
+    }
+    else if (mode == "brighterMode") {
+
+    }
+    else {
+        color = "white"
+    }
     gridSquare.style.backgroundColor = color
 }
 
@@ -166,8 +181,25 @@ eraserButton.addEventListener("click", function() {
 // ---------- CHANGE STYLE OF BUTTONS TO STANDARD -------------- //
 function unselectButtons() {
     let allButtons = document.querySelectorAll("button")
-    console.log(allButtons)
     allButtons.forEach(button => button.classList.remove("selectedButton"))
+}
+
+
+
+
+
+// ---------------- CHANGE COLOR ------------- //
+
+// Set color to color in input
+colorInput.addEventListener("change", function(){
+    color = colorInput.value
+})
+
+function randomColor() {
+    let r = Math.floor(Math.random() * 255)
+    let g = Math.floor(Math.random() * 255)
+    let b = Math.floor(Math.random() * 255)
+    return `rgb(${r}, ${g}, ${b})`
 }
 
 /*
@@ -226,17 +258,4 @@ clearButton.addEventListener("click", function(){
     allGridSquares.forEach(gridS => gridS.style.backgroundColor = "white")
 })
 
-// Set color to color in input
-colorInput.addEventListener("change", function(){
-    color = colorInput.value
-    console.log(color)
-})
-
 */
-
-function paintSquare(gridSquare, mode) {
-    if (mode == "rainbowMode") {
-        color = rgb(Math.random()*255, Math.random()*255, Math.random()*255)
-    }
-    gridSquare.style.backgroundColor = color
-}
